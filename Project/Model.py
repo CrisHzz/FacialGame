@@ -1,3 +1,4 @@
+import random
 class World:
     def __init__(self,size):
         self.size = size
@@ -5,6 +6,34 @@ class World:
         self.Hero = None
         self.devil = None
         #Creacion de el tamaño del mundo y el tablero, hero sera el jugador y devil el enemigo
+
+    def RandomPlaceEntity(self, entity):
+        while True:
+            x = random.randint(0, self.size-1)
+            y = random.randint(0, self.size-1)
+            if self.grid[x][y] == None:
+                entity.x = x
+                entity.y = y
+                self.grid[x][y] = entity
+                break
+        #Funcion para colocar entidades en el tablero de forma aleatoria
+
+    def createHero(self):
+        self.Hero = Hero(0, 0)
+        self.placeEntityRandomly(self.Hero)
+
+    def createDevil(self):
+        self.devil = Devil(0, 0)  
+        self.placeEntityRandomly(self.devil)
+
+    def createConsumable(self):
+        self.consumable = Consumable(0, 0)
+        self.placeEntityRandomly(self.consumable)
+
+    def createWeapon(self):
+        self.weapon = Weapon(0, 0)
+        self.placeEntityRandomly(self.weapon)
+    
 
 class Entity:
     def __init__(self,x,y):
