@@ -9,5 +9,10 @@ def main():
     spy.start()
     spy.mainloop()
 
+    while True:        
+        movement = spy.get_movement()
+        action = spy.get_action()
+        print(movement, action)
+
 if __name__ == '__main__':
     main()
