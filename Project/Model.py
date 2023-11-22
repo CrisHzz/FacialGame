@@ -1,7 +1,7 @@
 class World:
     def __init__(self,size):
         self.size = size
-        self.grid = [[None for i in range(size)] for i in range(size)]
+        self.grid = [[None for i in range(size)] for j in range(size)]
         self.Hero = None
         self.devil = None
         #Creacion de el tamaño del mundo y el tablero, hero sera el jugador y devil el enemigo
@@ -42,7 +42,7 @@ class Weapon(item):
     def __init__(self, x, y, icon):
         item.__init__(self, x, y)
         self.icon = "🔪"
-        self.damage = None
+        self.damage = 25
 
 
 
