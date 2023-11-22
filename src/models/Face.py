@@ -1,5 +1,3 @@
-import time
-import os
 import cv2
 from dataclasses import dataclass, field
 import threading
