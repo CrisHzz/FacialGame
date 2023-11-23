@@ -1,17 +1,19 @@
 class Entity:
-    def __init__(self,x,y):
-        self.x = x
-        self.y = y
-        self.hearts = None
+    def __init__(self):
+        self.hearts = 0
 
 class Hero(Entity):
-    def __init__(self,x,y):
-        Entity.__init__(self,x,y)
+    
+    def __init__(self):
+        super().__init__()
+        
         self.hearts = 10
         self.inventory = []
 
 
 class Devil(Entity):
-    def __init__(self,x,y):
-        Entity.__init__(self,x,y)
+    
+    def __init__(self):
+        
+        super().__init__()
         self.hearts = 100
