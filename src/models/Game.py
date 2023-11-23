@@ -23,7 +23,7 @@ class Game:
         size = self.map.size
         for i in range(size):
             for j in range(size):
-                if isinstance(self.map.map[i][j], Devil):
+                if isinstance(self.map.grid[i][j], Devil):
                     return (i, j)
         return None
     
@@ -37,25 +37,30 @@ class Game:
         
         heroPosition = self.getHeroPosition()
         
-        if heroPosition != None:
+        if heroPosition != None and self.map.isValidPosition(heroPosition[0], heroPosition[1]):
+            x_origin = heroPosition[0]
+            y_origin = heroPosition[1]
             
             x = heroPosition[0]
             y = heroPosition[1]
             
             spaces = self.map.spaces
-            
-            self.map.addEntity(spaces, x, y)
-            
+                
             if direction == 1:
                 x -= 1
+                
             elif direction == -1:
                 x += 1
+                
             elif direction == 2:
-                y -= 1
-            elif direction == -2:
                 y += 1
                 
-            self.map.addEntity(self.hero, x, y)
+            elif direction == -2:
+                y -= 1
+                
+            if self.map.isValidPosition(x, y):
+                self.map.addEntity(spaces, x_origin, y_origin)
+                self.map.addEntity(self.hero, x, y)
       
     def getDevilRandomMovement(self):
         
@@ -74,29 +79,21 @@ class Game:
         elif self.map.isValidPosition(x, y - 1):
             return(x, y - 1)
             
-    def moveDevil(self, direction: int):
+    def moveDevil(self, position: tuple):
         
         devilPosition = self.getDevilPosition()
         
-        if devilPosition != None:
+        if devilPosition != None and self.map.isValidPosition(devilPosition[0], devilPosition[1]):
             
-            x = devilPosition[0]
-            y = devilPosition[1]
+            x_origin = devilPosition[0]
+            y_origin = devilPosition[1]
             
-            spaces = self.map.spaces
+            x = position[0]
+            y = position[1]
             
-            self.map.addEntity(spaces, x, y)
-            
-            if direction == 1:
-                x -= 1
-            elif direction == -1:
-                x += 1
-            elif direction == 2:
-                y -= 1
-            elif direction == -2:
-                y += 1
-                
-            self.map.addEntity(self.hero, x, y)
+            if self.map.isValidPosition(x, y):
+                self.map.addEntity(self.map.spaces, x_origin, y_origin)
+                self.map.addEntity(self.devil, x, y)
     
     def isGameOver(self):
         heroHearts = self.hero.hearts
@@ -105,7 +102,7 @@ class Game:
     
     def run(self):
         
-        self.setHeroPosition(0,0)
+        self.setHeroPosition(9,0)
         self.setDevilPosition(9,9)
         
         cam = FaceController("Fuck the devil", screen_weight=1920, screen_height=1013)
@@ -159,7 +156,8 @@ class Game:
                 
             elif current == "devil":
                 
-                print("El demonio ya hizo lo suyo equis deeeeee")
+                new_position = self.getDevilRandomMovement()
+                self.moveDevil(new_position)
                 
                 current = "hero"
             
