@@ -4,7 +4,8 @@ sys.path.append('C:\\Users\\David\\Desktop\\Dev (Local)\\Dev-Github\\Python\\Est
 
 import random
 from typing import Union
-from src.models.Entity import Entity, Consumable, Weapon
+from src.models.Entity import Entity
+from src.models.Items import Consumable, Weapon
 
 
 class World:
@@ -32,22 +33,16 @@ class World:
     def addEntity(self, entity: Entity, x: int = None, y: int = None) -> None:
         if x == None or y == None:
             x, y = self.generateRandomPosition()
-        entity.x = x
-        entity.y = y
         self.grid[x][y] = entity
         
     def addConsumable(self, consumable: Consumable, x: int = None, y: int = None) -> None:
         if (x == None or y == None):
             x, y = self.generateRandomPosition()
-        consumable.x = x
-        consumable.y = y
         self.grid[x][y] = consumable
         
     def addWeapon(self, weapon: Weapon, x: int = None, y: int = None) -> None:
         if (x == None or y == None):
             x, y = self.generateRandomPosition()
-        weapon.x = x
-        weapon.y = y
         self.grid[x][y] = weapon
         
     def getElement(self, x: int, y: int) -> Union[Entity, Consumable, Weapon, None]:
