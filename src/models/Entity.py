@@ -1,17 +1,19 @@
 class Entity:
-    def __init__(self,x,y):
-        self.x = x
-        self.y = y
-        self.hearts = None
+    def __init__(self, hearts: int = 0):
+        self.hearts = hearts
 
 class Hero(Entity):
-    def __init__(self,x,y):
-        Entity.__init__(self,x,y)
-        self.hearts = 10
+    
+    def __init__(self):
+        super().__init__(hearts=10)
         self.inventory = []
+        
+    # If there's any enemy in front of the hero, attack it (Action) [Stand By]
+    # If there's no enemy, eat (Action) [Stand By]
+    # If there's any item below the hero, pick it up (Action) [Stand By]
 
 
 class Devil(Entity):
-    def __init__(self,x,y):
-        Entity.__init__(self,x,y)
-        self.hearts = 100
+    
+    def __init__(self):
+        super().__init__(hearts=100)

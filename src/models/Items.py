@@ -1,15 +1,15 @@
 class Item:
-    def __init__(self,x,y):
-        self.x = x
-        self.y = y
+    
+    def __init__(self, icon = None):
+        self.icon = icon
 
 class Consumable(Item):
-    def __init__(self, x, y, icon):
-        Item.__init__(self, x, y)
-        self.icon = "🍕"
+    
+    def __init__(self,  icon = "🍕"):
+        super().__init__(icon)
         
 class Weapon(Item):
-    def __init__(self, x, y, icon):
-        Item.__init__(self, x, y)
-        self.icon = "🔪"
-        self.damage = 0
+    
+    def __init__(self, icon = "🔪"):
+        super().__init__(icon)
+        self.damage = 25
