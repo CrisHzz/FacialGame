@@ -26,10 +26,10 @@ class Game:
         return None
     
     def setHeroPosition(self, x: int, y: int):
-        self.map.addEntity(x, y, self.hero)
+        self.map.addEntity(self.hero, x, y)
     
     def setDevilPosition(self, x: int, y: int):
-        self.map.addEntity(x, y, self.devil)
+        self.map.addEntity(self.devil, x, y)
     
     def moveHero(self, direction: int):
         
@@ -93,9 +93,9 @@ class Game:
             self.map.addEntity(x, y, self.hero)
     
     def isGameOver(self):
-        heroLife = self.hero.life
-        devilLife = self.devil.life
-        return (heroLife <= 0) or (devilLife <= 0)
+        heroHearts = self.hero.hearts
+        devilHearts = self.devil.hearts
+        return (heroHearts <= 0) or (devilHearts <= 0)
     
     
     

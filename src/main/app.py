@@ -9,10 +9,9 @@ from src.models.Game import Game
 def main():
     
     gameMap = World(10)
+    gameMap.generateGrid()
     game = Game(gameMap)
     game.run()
-    
-    ...
     
     
 if __name__ == '__main__':
