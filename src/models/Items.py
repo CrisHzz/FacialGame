@@ -1,7 +1,7 @@
 class Item:
     
     def __init__(self, icon = None):
-        pass
+        self.icon = icon
 
 class Consumable(Item):
     
