@@ -6,7 +6,6 @@ class Hero(Entity):
     
     def __init__(self):
         super().__init__()
-        
         self.hearts = 10
         self.inventory = []
 
@@ -14,6 +13,5 @@ class Hero(Entity):
 class Devil(Entity):
     
     def __init__(self):
-        
         super().__init__()
         self.hearts = 100
