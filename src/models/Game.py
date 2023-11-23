@@ -1,6 +1,8 @@
+import time
 from src.models.World import World
 from src.models.Entity import Hero, Devil
 from src.models.Face import FaceController
+from src.models.External import clear_console
 
 class Game:
     
@@ -13,7 +15,7 @@ class Game:
         size = self.map.size
         for i in range(size):
             for j in range(size):
-                if isinstance(self.map.map[i][j], Hero):
+                if isinstance(self.map.grid[i][j], Hero):
                     return (i, j)
         return None
     
@@ -40,7 +42,9 @@ class Game:
             x = heroPosition[0]
             y = heroPosition[1]
             
-            self.map.addEntity(x, y, None)
+            spaces = self.map.spaces
+            
+            self.map.addEntity(spaces, x, y)
             
             if direction == 1:
                 x -= 1
@@ -51,7 +55,7 @@ class Game:
             elif direction == -2:
                 y += 1
                 
-            self.map.addEntity(x, y, self.hero)
+            self.map.addEntity(self.hero, x, y)
       
     def getDevilRandomMovement(self):
         
@@ -90,7 +94,7 @@ class Game:
             elif direction == -2:
                 y += 1
                 
-            self.map.addEntity(x, y, self.hero)
+            self.map.addEntity(self.hero, x, y)
     
     def isGameOver(self):
         heroHearts = self.hero.hearts
@@ -101,23 +105,69 @@ class Game:
     
     def run(self):
         
+        self.setHeroPosition(0,0)
+        self.setDevilPosition(9,9)
+        
         cam = FaceController("Fuck the devil", screen_weight=1920, screen_height=1013)
         cam.start()
         cam.mainloop()
-                
-        self.setHeroPosition(0,0)
-        self.setDevilPosition(3,3)
         
         current = "hero"
-        action = None
-        movement = None
-                
-        while not self.isGameOver():
-
+        hero_movenment = None
+        hero_action = None
+        
+        hero_icon = self.hero.icon
+        devil_icon = self.devil.icon
+        
+        hero_hearts = self.hero.hearts
+        devil_hearts = self.devil.hearts
+        
+        while (not self.isGameOver()):
+            
+            self.map.showGrid()
+            
+            print("")
             
             if current == "hero":
-                while (action != None or movement != None):
-                    action = cam.get_action()
-                    movement = cam.get_movement()
+                print(f"Current turn: {hero_icon}")
             else:
-                pass
+                print(f"Current turn: {devil_icon}")
+            
+            print(f" -> Hero ({hero_icon}) (x{hero_hearts} ❤)")
+            print(f" -> Hero (Inventory 🎒) {self.hero.inventory}")
+            
+            
+            print(f"-> Devil ({devil_icon}) (x{devil_hearts} ❤)")
+            
+            if current == "hero":
+                
+                while True:
+                    
+                    hero_movenment = cam.get_movement()
+                    hero_action = cam.get_action()
+                                        
+                    if (hero_movenment != 0 and hero_movenment is not None) or (hero_action == True):
+                        break
+                
+                if hero_action:
+                    print("El jugador hizo algo, no sé")
+                else:
+                    self.moveHero(hero_movenment)
+                
+                current = "devil"
+                
+                
+            elif current == "devil":
+                
+                print("El demonio ya hizo lo suyo equis deeeeee")
+                
+                current = "hero"
+            
+            
+            time.sleep(5)
+            hero_movenment = None
+            hero_action = None
+            clear_console()
+        
+                    
+            
