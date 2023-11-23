@@ -103,7 +103,8 @@ class Game:
         
         cam = FaceController("Fuck the devil", screen_weight=1920, screen_height=1013)
         cam.start()
-        
+        cam.mainloop()
+                
         self.setHeroPosition(0,0)
         self.setDevilPosition(3,3)
         
@@ -112,6 +113,7 @@ class Game:
         movement = None
                 
         while not self.isGameOver():
+
             
             if current == "hero":
                 while (action != None or movement != None):
