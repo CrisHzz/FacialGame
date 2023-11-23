@@ -33,14 +33,14 @@ class World:
         self.grid[x][y] = entity
         
     def addConsumable(self, consumable: Consumable, x: int = None, y: int = None) -> None:
-        if x == None or y == None:
+        if (x == None or y == None):
             x, y = self.generateRandomPosition()
         consumable.x = x
         consumable.y = y
         self.grid[x][y] = consumable
         
     def addWeapon(self, weapon: Weapon, x: int = None, y: int = None) -> None:
-        if x == None or y == None:
+        if (x == None or y == None):
             x, y = self.generateRandomPosition()
         weapon.x = x
         weapon.y = y
