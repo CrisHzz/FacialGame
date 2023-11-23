@@ -47,13 +47,13 @@ class World:
         if (self.isValidPosition(x, y)):
             self.grid[x][y] = entity
         
-    def addConsumable(self, consumable: Consumable, x: int = None, y: int = None) -> None:
-        if (x == None or y == None):
-            self.grid[x][y] = consumable
-        
-    def addWeapon(self, weapon: Weapon, x: int = None, y: int = None) -> None:
+    def addConsumable(self, x: int = None, y: int = None) -> None:
         if (self.isValidPosition(x, y)):
-            self.grid[x][y] = weapon
+            self.grid[x][y] = Consumable()
+        
+    def addWeapon(self, x: int = None, y: int = None) -> None:
+        if (self.isValidPosition(x, y)):
+            self.grid[x][y] = Weapon()
         
     def getElement(self, x: int, y: int) -> Union[Entity, Consumable, Weapon, None]:
         if self.isValidPosition(x, y):
