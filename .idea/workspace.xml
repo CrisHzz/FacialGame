@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a73bf38-10cb-4757-9aaa-ff9bbd77eb78" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/FacialGame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FacialGame.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Face.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Face.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +41,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "macOS",
     "last_opened_file_path": "/Users/andresdavidcardenasramirez/Documents/Universidad/semestre2023-2/codigo/proyecto-final/FacialGame",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -57,13 +59,11 @@
       <option name="presentableId" value="Default" />
       <updated>1700728863771</updated>
       <workItem from="1700728864930" duration="63000" />
+      <workItem from="1700738599626" duration="245000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FacialGame$app.coverage" NAME="app Coverage Results" MODIFIED="1700728725079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/main" />
   </component>
 </project>

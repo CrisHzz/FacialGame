@@ -1,7 +1,7 @@
 import sys
 
 # Replace the path below with the path of the project in your computer
-sys.path.append('C:\\Users\\David\\Desktop\\Dev (Local)\\Dev-Github\\Python\\Estructura de Datos\\FacialGame')
+sys.path.append('/Users/andresdavidcardenasramirez/Documents/Universidad/semestre2023-2/codigo/proyecto-final/FacialGame')
 
 from src.models.World import World
 from src.models.Game import Game
