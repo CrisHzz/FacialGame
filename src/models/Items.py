@@ -12,4 +12,4 @@ class Weapon(Item):
     
     def __init__(self, icon = "🔪"):
         super().__init__(icon)
-        self.damage = 0
+        self.damage = 25
