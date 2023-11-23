@@ -83,7 +83,9 @@ class Game:
             x = devilPosition[0]
             y = devilPosition[1]
             
-            self.map.addEntity(x, y, None)
+            spaces = self.map.spaces
+            
+            self.map.addEntity(spaces, x, y)
             
             if direction == 1:
                 x -= 1
@@ -100,8 +102,6 @@ class Game:
         heroHearts = self.hero.hearts
         devilHearts = self.devil.hearts
         return (heroHearts <= 0) or (devilHearts <= 0)
-    
-    
     
     def run(self):
         

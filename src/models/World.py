@@ -16,7 +16,10 @@ class World:
         self.spaces: str = "  "
 
     def isValidPosition(self, x: int, y: int) -> bool:
-        return (x is not None and y is not None) and (0 <= x < self.size) and (0 <= y < self.size)
+        check1 = (x is not None) and (y is not None)
+        check2 = (x >= 0) and (x <= self.size - 1)
+        check3 = (y >= 0) and (y <= self.size - 1)
+        return check1 and check2 and check3
 
     def generateGrid(self) -> None:
         if self.size is None:
