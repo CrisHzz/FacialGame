@@ -8,7 +8,7 @@ from src.models.Game import Game
 
 def main():
     
-    gameMap = World(3)
+    gameMap = World(4)
     gameMap.generateGrid()
     game = Game(gameMap)
     game.run()

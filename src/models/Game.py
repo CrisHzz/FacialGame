@@ -192,6 +192,7 @@ class Game:
         cam = FaceController("Fuck the devil", screen_weight=1920, screen_height=1013)
         cam.start()
         cam.mainloop()
+        print("Camera started")
         
         current = "hero"
         hero_movenment = None
