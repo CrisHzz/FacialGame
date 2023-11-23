@@ -16,10 +16,10 @@ class World:
         self.spaces: str = "  "
 
     def isValidPosition(self, x: int, y: int) -> bool:
-        return (x >= 0 and x < self.size - 1) and (y >= 0 and y < self.size - 1) and (self.grid[x][y] == self.spaces)
+        return (x is not None and y is not None) and (0 <= x < self.size) and (0 <= y < self.size)
 
     def generateGrid(self) -> None:
-        if self.size == None:
+        if self.size is None:
             self.size = 5
         self.grid = [[self.spaces for _ in range(self.size)] for _ in range(self.size)]
 
@@ -36,19 +36,16 @@ class World:
             print(self.grid[i])
         
     def addEntity(self, entity: Entity, x: int = None, y: int = None) -> None:
-        if (x == None or y == None) and (self.isValidPosition(x, y)):
-            x, y = self.generateRandomPosition()
+        if (self.isValidPosition(x, y)):
             self.grid[x][y] = entity
         
     def addConsumable(self, consumable: Consumable, x: int = None, y: int = None) -> None:
         if (x == None or y == None):
-            x, y = self.generateRandomPosition()
-        self.grid[x][y] = consumable
+            self.grid[x][y] = consumable
         
     def addWeapon(self, weapon: Weapon, x: int = None, y: int = None) -> None:
-        if (x == None or y == None):
-            x, y = self.generateRandomPosition()
-        self.grid[x][y] = weapon
+        if (self.isValidPosition(x, y)):
+            self.grid[x][y] = weapon
         
     def getElement(self, x: int, y: int) -> Union[Entity, Consumable, Weapon, None]:
         if self.isValidPosition(x, y):

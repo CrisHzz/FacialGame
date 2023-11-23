@@ -164,7 +164,7 @@ class Game:
                 current = "hero"
             
             
-            time.sleep(5)
+            time.sleep(3)
             hero_movenment = None
             hero_action = None
             clear_console()
