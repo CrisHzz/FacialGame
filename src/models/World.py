@@ -36,6 +36,7 @@ class World:
         while True:
             x = random.randint(0, self.size - 1)
             y = random.randint(0, self.size - 1)
+            
             if self.isValidPosition(x, y):
                 return (x, y)
         

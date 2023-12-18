@@ -16,6 +16,7 @@ class FaceController:
     # Variables to create rectangles around the face and the screen
     _left_top: tuple = field(default=(50, 30)) # Default coords
     _right_bottom: tuple = field(init=False)
+    
     _top_face: tuple = field(default=(0, 0)) # Default coords
     _bottom_face: tuple = field(default=(0, 0)) # Default coords
     
@@ -71,7 +72,6 @@ class FaceController:
         # Center
         return 0
 
-    # Inspired by Tkinter methods xd
     def mainloop(self) -> None:
         
         def auxiliar_loop():
@@ -94,10 +94,12 @@ class FaceController:
                     self._right_bottom = ((self._weight - 120), (self._height - 10))
                     self._left_top = (50, 30)
                     
-                    cv2.rectangle(frame, self._top_face, self._bottom_face, (255, 0, 0), 2)
-                    cv2.rectangle(frame, self._left_top, self._right_bottom, (0, 255, 0), 2)
+                    cv2.rectangle(frame, self._top_face, self._bottom_face, (255, 0, 0), 2) # -> CV2
+                    
+                    cv2.rectangle(frame, self._left_top, self._right_bottom, (0, 255, 0), 2) # -> Manuales
                       
                 cv2.imshow(self.title, frame)
+                
                 if self.check_exit():
                     break
 

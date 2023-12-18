@@ -1,6 +1,6 @@
 from src.models.Items import Consumable, Weapon
 
-
+# -> Abstract Class
 class Entity:
     def __init__(self, hearts: int = 0, icon: str = None):
         self.hearts = hearts
@@ -50,7 +50,6 @@ class Hero(Entity):
     
     # If there's any enemy in front of the hero, attack it (Action) [Stand By]
     # If there's no enemy, eat (Action) [Stand By]
-
 
 class Devil(Entity):
     

@@ -26,6 +26,7 @@ class Game:
     def _generateConsumable(self, times = 3):
         
         if self._checkTimes(times) >= 0:
+            
             i = 0
             
             while i < times:
@@ -78,10 +79,8 @@ class Game:
         return False
         
     def _canHeroEat(self):
-        for element in self.hero.inventory:
-            if isinstance(element, Consumable):
-                return True
-        return False
+        count = self.hero.getConsumableAmount()
+        return count > 0
     
     def _spawnEntity(self):
         forHero = False
@@ -192,14 +191,13 @@ class Game:
         cam = FaceController("Fuck the devil", screen_weight=1920, screen_height=1013)
         cam.start()
         cam.mainloop()
-        print("Camera started")
         
         current = "hero"
+        
         hero_movenment = None
         hero_action = None
         
         while (not self.isGameOver()):
-            
             
             hero_icon = self.hero.icon
             devil_icon = self.devil.icon
